@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: notification
+      MONGO_URI: mongodb+srv://Sushant_Bhaiswar_30:u0K5xGjZT41sPhGH@cluster0.p38uk.mongodb.net/notification
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+    networks:
+      - app_network
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo_service
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app_network
+
+volumes:
+  mongo_data:
+
+networks:
+  app_network:
+    driver: bridge
