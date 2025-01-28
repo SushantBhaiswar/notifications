@@ -13,6 +13,7 @@ const envVarsSchema = Joi.object()
         SERVICE: Joi.string().required(),
         PORT: Joi.number().default(4000),
         MONGODB_URL: Joi.string().required(),
+        RABBITMQ_URL: Joi.string().required(),
     })
     .unknown();
 
@@ -29,6 +30,7 @@ module.exports = {
     env: envVars.NODE_ENV,
     port: envVars.PORT,
     service: envVars.SERVICE,
+    rabbitmq: envVars.RABBITMQ_URL,
     verifyEmailExpirationMinutes: envVars.EMAIL_VERIFY_OTP_EXPIRATION_MINUTES,
     mongoose: {
         url: envVars.MONGODB_URL,

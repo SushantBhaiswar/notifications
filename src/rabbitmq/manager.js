@@ -4,11 +4,12 @@ const { getQueuesName } = require('../rabbitmq/store/queues')
 const { getExchangesName } = require('../rabbitmq/store/exchanges')
 const queuesname = getQueuesName('org')
 const exchangesname = getExchangesName('org')
+const config = require('../config/config')
 class RabbitMQManager {
     constructor() {
         this.connection = null;
         this.channel = null;
-        this.connectionUrl = process.env.RABBITMQ_URL || 'amqp://localhost';
+        this.connectionUrl = config.rabbitmq|| 'amqp://localhost';
         this.exchanges = {};
         this.queues = {};
         this.socketIO = null;
