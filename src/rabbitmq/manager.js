@@ -9,7 +9,7 @@ class RabbitMQManager {
     constructor() {
         this.connection = null;
         this.channel = null;
-        this.connectionUrl = config.rabbitmq|| 'amqp://localhost';
+        this.connectionUrl = config.rabbitmq|| 'amqp://rabbitmq';
         this.exchanges = {};
         this.queues = {};
         this.socketIO = null;
